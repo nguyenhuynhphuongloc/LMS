@@ -7,7 +7,6 @@ import { vi } from "@payloadcms/translations/languages/vi";
 import path from "path";
 import { buildConfig } from "payload";
 import { payloadSidebar } from "payload-sidebar-plugin";
-import sharp from "sharp";
 import { fileURLToPath } from "url";
 import { DEFAULT_BADGE_COLORS } from "./constants";
 
@@ -87,7 +86,7 @@ export default buildConfig({
   //defaultLocale: "vi",
   //fallback: true,
   //},
-  sharp,
+
   plugins: [
     payloadSidebar({
       cssVariables: {

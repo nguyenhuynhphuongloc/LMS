@@ -30,7 +30,6 @@ export const env = createEnv({
    */
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
-    NEXT_PUBLIC_SERVER_URL: z.string().url(),
   },
 
   /**
@@ -42,8 +41,6 @@ export const env = createEnv({
 
     // Payload CMS
     PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
-
-    NEXT_PUBLIC_SERVER_URL: process.env.NEXT_PUBLIC_SERVER_URL,
 
     // Email
     SMTP_HOST: process.env.SMTP_HOST,
