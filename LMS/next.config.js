@@ -26,7 +26,7 @@ const config = withPayload({
   },
   images: {
     remotePatterns: [
-      ...[NEXT_PUBLIC_SERVER_URL, process.env.S3_ENDPOINT]
+      ...[NEXT_PUBLIC_SERVER_URL]
         .filter(Boolean)
         .map((item) => {
           const url = new URL(item);

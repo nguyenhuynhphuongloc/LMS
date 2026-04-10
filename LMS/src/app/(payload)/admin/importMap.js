@@ -31,7 +31,6 @@ import { default as default_046a7ccaa7135137fa523498f9b666a1 } from '@/component
 import { default as default_9e914c892beea70867efc058ded0ba1c } from '@/components/afterNavLinks/wow-sessions.tsx'
 import { default as default_4a3bde20d4f76bf00d5b259b115cae13 } from '@/components/ui/BeforeDashboard'
 import { default as default_aeef0123fea1af819397817664b7330c } from '@/components/AdminProviders'
-import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 import { default as default_e727f6a9979e500ce6346d076d36ff6f } from '@/components/StudentViolation/index.tsx'
 import { default as default_ded0cc5f2d6e9826ba4ed9e754bd3562 } from '@/components/ScheduleView/index.tsx'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
@@ -70,7 +69,6 @@ export const importMap = {
   "@/components/afterNavLinks/wow-sessions.tsx#default": default_9e914c892beea70867efc058ded0ba1c,
   "@/components/ui/BeforeDashboard#default": default_4a3bde20d4f76bf00d5b259b115cae13,
   "@/components/AdminProviders#default": default_aeef0123fea1af819397817664b7330c,
-  "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
   "@/components/StudentViolation/index.tsx#default": default_e727f6a9979e500ce6346d076d36ff6f,
   "@/components/ScheduleView/index.tsx#default": default_ded0cc5f2d6e9826ba4ed9e754bd3562,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1

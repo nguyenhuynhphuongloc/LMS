@@ -14,13 +14,6 @@ export const env = createEnv({
     // Payload CMS
     PAYLOAD_SECRET: z.string().min(1),
 
-    // S3 Storage Configuration
-    S3_ENDPOINT: z.string().url(),
-    S3_BUCKET: z.string().min(1),
-    S3_REGION: z.string().min(1),
-    S3_ACCESS_KEY_ID: z.string().min(1),
-    S3_SECRET_ACCESS_KEY: z.string().min(1),
-
     // Email Configuration
     SMTP_HOST: z.string().min(1),
     SMTP_USER: z.string().min(1),
@@ -50,12 +43,6 @@ export const env = createEnv({
     // Payload CMS
     PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
 
-    // S3 Storage
-    S3_ENDPOINT: process.env.S3_ENDPOINT,
-    S3_BUCKET: process.env.S3_BUCKET,
-    S3_REGION: process.env.S3_REGION,
-    S3_ACCESS_KEY_ID: process.env.S3_ACCESS_KEY_ID,
-    S3_SECRET_ACCESS_KEY: process.env.S3_SECRET_ACCESS_KEY,
     NEXT_PUBLIC_SERVER_URL: process.env.NEXT_PUBLIC_SERVER_URL,
 
     // Email
