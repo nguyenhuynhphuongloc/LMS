@@ -65,7 +65,7 @@ export default buildConfig({
       idleTimeoutMillis: 30000, // Nếu bàn trống sau 30s, hãy dọn dẹp nó
       connectionTimeoutMillis: 15000, // Đợi tối đa 15s để có bàn, nếu không báo lỗi (tránh treo app)
     },
-    push: true,
+    push: false,
   }),
   email: nodemailerAdapter({
     defaultFromAddress: env.EMAIL_FROM,
