@@ -3,6 +3,7 @@ import collections from "@/payload/collections";
 import globals from "@/payload/globals";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { nodemailerAdapter } from "@payloadcms/email-nodemailer";
+import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 import { vi } from "@payloadcms/translations/languages/vi";
 import path from "path";
 import { buildConfig } from "payload";
@@ -146,6 +147,14 @@ export default buildConfig({
         timekeeping: "Timekeeping",
       },
       pinnedStorage: "localStorage",
+    }),
+    vercelBlobStorage({
+      collections: {
+        media: {
+          prefix: "media",
+        },
+      },
+      token: env.BLOB_READ_WRITE_TOKEN,
     }),
   ],
   i18n: {

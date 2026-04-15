@@ -194,42 +194,41 @@ export default function ScheduleViewClient() {
     setCurrentMonday(newMonday);
   };
 
-  useRealtime(async (data) => {
-    const fetchLatest = async (): Promise<boolean> => {
-      if (document.visibilityState === "visible" && !isFormModified && id) {
-        try {
-          const res = await fetch(
-            `/api/${collectionSlug}/${id}?depth=0&t=${Date.now()}`,
-            {
-              cache: "no-store",
-              headers: {
-                Pragma: "no-cache",
-                "Cache-Control": "no-cache",
-              },
+  const fetchLatest = useCallback(async (): Promise<boolean> => {
+    if (document.visibilityState === "visible" && !isFormModified && id) {
+      try {
+        const res = await fetch(
+          `/api/${collectionSlug}/${id}?depth=0&t=${Date.now()}`,
+          {
+            cache: "no-store",
+            headers: {
+              Pragma: "no-cache",
+              "Cache-Control": "no-cache",
             },
-          );
+          },
+        );
 
-          if (res.ok) {
-            const latestDoc = await res.json();
-            const newData = latestDoc?.schedule_data || {};
-            const prevStr = JSON.stringify(allData);
-            const nextStr = JSON.stringify(newData);
+        if (res.ok) {
+          const latestDoc = await res.json();
+          const newData = latestDoc?.schedule_data || {};
+          const prevStr = JSON.stringify(allData);
+          const nextStr = JSON.stringify(newData);
 
-            if (prevStr !== nextStr) {
-              console.log("[Real-time] Đã thấy thay đổi, cập nhật Admin Grid.");
-              setModified(false);
-              setAllData(newData);
-              return true;
-            }
+          if (prevStr !== nextStr) {
+            console.log("[Data Refresh] Đã thấy thay đổi, cập nhật Admin Grid.");
+            setModified(false);
+            setAllData(newData);
+            return true;
           }
-        } catch (err) {
-          console.error("Real-time update failed:", err);
         }
+      } catch (err) {
+        console.error("Data refresh failed:", err);
       }
-      return false;
-    };
+    }
+    return false;
+  }, [id, collectionSlug, isFormModified, allData]);
 
-    const signalTime = data?.updatedAt || "";
+  useRealtime(async (data) => {
     const isNew = await fetchLatest();
 
     if (!isNew && !isFormModified) {
@@ -238,6 +237,15 @@ export default function ScheduleViewClient() {
       }, 700);
     }
   });
+
+  // Fallback: Tự động refresh API mỗi 1 phút
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      void fetchLatest();
+    }, 60000); // 60 seconds
+
+    return () => clearInterval(intervalId);
+  }, [fetchLatest]);
 
   const saveConfig = async () => {
     if (!id) return;
